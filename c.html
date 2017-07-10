@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>表单</title>
+  <style type="text/css">
+    textarea{
+     width:200px;
+     height:100px;}
+  </style>
+</head>
+<body>
+ <form action="#">
+  <div>
+    姓名：<input type="text" name="name" placeholder="用户名">
+  </div>
+  <div>
+    密码：<input type="password" name="password">
+  </div>
+  <div>
+    性别：<input type="radio" name="sex1" id="male1"/>
+    <label for="male1">男</label>
+    <input type="radio" name="sex1" id="female1" />
+    <label for="female1">女</label>
+  </div>
+  <div>
+    取向：<input type="radio" name="sex2" id="male2"/>
+    <label for="male2">男</label>
+    <input type="radio" name="sex2" id="female2" />
+    <label for="female2">女</label>
+  </div>
+  <div>
+     爱好：<input type="checkbox" name="hobby" id="dota"/>
+      <label for="dota">dota</label>
+      <input type="checkbox" name="hobby" id="travel"/>
+      <label for="travel">旅游</label> 
+      <input type="checkbox" name="hobby" id="pat"/>
+      <label for="pat">宠物</label> 
+   </div>
+   <div> 评论：<textarea name="manywords" maxlength=100 placeholder="请输入评论">  </textarea></div>
+   <div>我的car：
+      <select name="macar">
+        <option value="BMW">宝马 </option>
+        <option value="Saab">萨博</option>
+        <option value="benz">奔驰</option>
+        <option value="Audi">奥迪</option>
+      </select>
+      <button type="submit">提交</button>
+  </div>
+ </form>
+</body>
+</html>
