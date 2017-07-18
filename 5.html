@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>border练习</title>
+	<style type="text/css">
+	  .lab1,.lab2,.lab3,.lab4,.lab5{ 
+	  	border-width:30px;
+	  }
+      div{
+      	border-style:solid;  
+      	position: absolute;
+      }
+
+    .lab1{
+        border-color:blue yellow green red;
+      }
+    .lab2{
+        border-color:blue transparent transparent transparent; 
+        top:80px;
+      }
+    .lab3{
+        border-color:transparent transparent transparent red;
+        top:120px;
+      }
+
+    .lab4{
+        border-color:transparent yellow transparent transparent ;
+        top:180px;
+      }
+    .lab5{
+        border-color:transparent transparent green transparent;
+        top:240px;
+      }
+    .lab6{
+    	border-width:40px 0px 0px 40px;
+        border-color:transparent transparent  transparent red;
+        top:320px;  
+      }
+    .lab7{
+        border-width:0px 0px 40px 40px;
+        border-color:transparent transparent green transparent ;
+        top:380px;
+      }
+	</style>
+</head>
+<body>
+	<div class="lab1"></div>  
+    <div class="lab2"></div> 
+    <div class="lab3"></div> 
+    <div class="lab4"></div> 
+    <div class="lab5"></div> 
+    <div class="lab6"></div> 
+    <div class="lab7"></div> 
+</body>
+</html>
