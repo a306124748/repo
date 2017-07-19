@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>雪碧图练习</title>
+</head>
+<style type="text/css">
+	div{
+		width: 80px;
+		height: 30px;
+		display: inline-block;	
+	}
+	div>i{
+		width: 30px;
+		height: 30px;
+		float: left;
+		background-image: url(sprite.png);
+		margin: 4px;
+    	padding: 2px;
+		
+	}
+    div>h3{
+    	margin: 0;
+    	font-size: 40px;
+    	padding-top: 4px;
+    }
+    .advance>i{
+    	background-position: -58px -97px;		
+    }
+    .advance>i:hover{
+    	background-position: -155px -95px;
+    }
+    .begin>i{
+    	background-position: -90px -96px;
+    }
+    .begin>i:hover{
+    	background-position: -188px -95px;
+    }
+    .stop>i{
+    	background-position: -121px -95px;
+    }
+    .stop>i:hover{
+    	background-position: -224px -96px;
+    }    	
+</style>
+<body>
+    <div class="advance">
+    	<i></i>
+    	<p>前进</p>
+    </div>
+    <div class="begin">
+    	<i></i>
+    	<p>开始</p>
+    </div>
+    <div class="stop">
+    	<i></i>
+    	<p>停止</p>
+    </div>
+</body>
+</html>
