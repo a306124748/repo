@@ -32,18 +32,20 @@ hr{
 	background: url(http://book.jirengu.com/jirengu-inc/jrg-renwu6/homework/%E9%83%AD%E7%90%AA%E7%90%9B/task14/image/bg.jpg);
 	background-size:cover;  
 }
-.table{
+.hd-container{
+	position: relative;
 	width: 960px;
 	margin: 0 auto;
 	height: 100%;
-	display:table;
 }
-/*vertical-align:middle;能使文字垂直居中，但只针对特定的标签，display：table；可以模拟table，实现居中*/
 .hd-wrapper{
+	position: absolute;
     padding:201px;
 	text-align: center; 
-	display:table-cell;
-	vertical-align:middle;	
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);	
+	
 }
 #header h3,#header p{
 	margin-bottom: 20px;
