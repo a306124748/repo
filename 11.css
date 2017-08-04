@@ -1,0 +1,131 @@
+*{
+	margin:0;
+	padding: 0;
+	box-sizing: border-box;;
+}
+ul,li{list-style: none;}
+body{
+  font: 14px/1.5 normal;
+  font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+  color: #333;
+}
+a{
+	text-decoration: none;
+    color: #666;
+}
+a:hover{
+	color: #333;
+}
+.wrapper{
+	width: 1000px;
+	margin:0 auto;
+}
+.clearfix:after{
+	content:'';
+    display: block;
+    clear: both;
+}
+.btn{
+	padding: 5px 8px;
+	border:1px solid #ccc;
+	display: inline-block;
+	border-radius: 4px;
+}
+#header{
+	border: 1px solid #ccc;
+}
+#header .logo i{
+	font-size: 30px;
+    line-height: 50px;
+    float:left;
+}
+#header .navbar{
+	float: left;
+	margin-left: 20px;
+	
+}
+.wrapper .navbar >li{
+	float:left;
+	height: 50px;
+  line-height: 50px;
+  padding: 0 10px;
+  position: relative;
+}
+.wrapper .navbar .dropmenu {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	display:none;
+	background: #fff;
+	border: 1px solid #ccc;
+}
+.wrapper .navbar>li:hover .dropmenu{
+	display: block;
+}
+.dropmenu li{
+	border-bottom: 1px dashed #ccc;
+	line-height: 16px;
+	padding: 10px;
+	text-align: center;
+}
+.dropmenu li:hover{
+  background: #eee;
+}
+.dropmenu li:last-child{
+  border: none;
+}
+.intro{
+	background-color: #b84d45;
+    color: #fff;
+    padding: 30px 0;
+}
+.main{
+	margin-top:40px;
+	margin-bottom: 10px;
+    background: #eee;
+    border-radius: 4px;
+    padding:10px;
+    color: #666;
+}
+.main a{
+    color: #b84d45;
+}
+.works ul li{
+	float: left;
+	margin-left: 45px;
+	margin-top: 20px;
+	border:1px solid #ccc;
+	text-align: center;
+}
+.works ul{
+	margin-left: -45px;
+}
+.works>ul >li img{
+	width: 300px;
+    height: 200px;
+}
+.works>ul>li h3,.works>ul>li p{
+   text-align: left;
+   padding: 5px 10px;
+}
+.works .btn{
+	margin-bottom: 10px;
+}
+.resume{
+	text-align: center;
+	margin-top: 30px;
+	background-color: #b84d45;
+    color: #fff;
+    padding:20px 0;
+}
+.resume a{
+	color:#fff;
+	margin-top: 10px;
+}
+#footer p{
+	margin-top: 30px;
+	height: 81px;
+	line-height: 81px;
+	text-align: center;
+	border-top: 1px solid #eee;
+}
