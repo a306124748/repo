@@ -20,33 +20,17 @@ for(var a in obj){
 	console.log(obj[a]);
 }// hunger male 28
 
-function isNumber(el){
-    if (typeof el==='number') {
-        return true;
-    } else {
-        return false;
-    }
+function isNumber(input){
+         return typeof input==='number'
 }
-function isString(el){
-    if (typeof el==='string') {
-        return true;
-    } else {
-        return false;
-    }
+function isString(input){
+   return typeof input==='string'
 }
-function isBoolean(el){
-    if (typeof el==='boolean') {
-        return true;
-    } else {
-        return false;
-    }
+function isBoolean(input){
+   return typeof input==='boolean'
 }
-function isFunction(el){
-    if (typeof el==='function') {
-        return true;
-    } else {
-        return false;
-    }
+function isFunction(input){
+     return typeof input==='function'
 }
 
 var a = 2,
