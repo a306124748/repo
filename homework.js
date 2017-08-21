@@ -48,7 +48,7 @@ name valley
 function sumOfSquares(){
 	var sum=0;
 	for(i=0;i<arguments.length;i++){
-        sum=sum +(arguments[i]*arguments[i]);
+        sum+=Math.pow(arguments[i],2);
   	}
   	return sum;
 }
