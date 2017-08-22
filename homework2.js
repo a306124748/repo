@@ -75,9 +75,9 @@ find(arr, 0) // -1
 /*4. 写一个函数filterNumeric，把数组 arr 中的数字过滤出来赋值给新数组newarr，
 原数组arr不变 （****）*/
 function filterNumberic(arr) {
-  var newarr=new Array();
+  var newarr=[];
     for(var i=0; i<arr.length; i++){
-        if(typeof(arr[i])=="number"){
+        if(typeof(arr[i])==="number"){
         newarr.push(arr[i]);
         }
     }
@@ -126,6 +126,7 @@ removeClass(obj, 'blabla')  // 因为blabla不存在，所以此操作无任何�
 
 /*6. 写一个camelize函数，把my-short-string形式的字符串转化成myShortString形式的字符串，
 如 (***)*/
+1.方法1
 function camelize(str){
     var arr=str.split("-");
     for(var i=1;i<arr.length; i++){
@@ -133,6 +134,13 @@ function camelize(str){
     }
     return  arr.join("");
 }
+2.方法2
+ function camelize(str){
+  return str.replace(/\-(\w)/g,function (match,letter){
+    return letter.toUpperCase()
+  })
+}
+
 camelize("background-color") == 'backgroundColor'
 camelize("list-style-image") == 'listStyleImage'
 
@@ -163,10 +171,24 @@ console.log(arr)  // [1,3,4,5,2]
 
 
 //9. 写一个ageSort函数实现数组中对象按age从小到大排序 （***）
-function ageSort(people) {
+1.function ageSort(people) {
   people.sort(function(a,b){return a.age - b.age;});
   return people;
 }
+2.function ageSort(arr){
+  var i=arr.length-1;
+  while(i>0){
+    var pos=0;
+    for(var j=0;j<i;j++)
+      if (arr[j].age>arr[j+1].age) {
+        pos=j;
+        var tmp=arr[j];arr[j]=arr[j+1];arr[j+1]=tmp;
+      }
+      i=pos;
+  }
+  return arr;
+}
+
 var john = { name: "John Smith", age: 23 }
 var mary = { name: "Mary Key", age: 18 }
 var bob = { name: "Bob-small", age: 6 }
@@ -179,9 +201,20 @@ ageSort(people) // [ bob, mary, john ]
 第一个是要处理的数组，第二个参数是回调函数(回调函数遍历接受每一个数组元素，
 当函数返回true时保留该元素，否则删除该元素)。实现如下功能： （****）
 */
-function filter(arr,func) {
+1.function filter(arr,func) {
    return arr.filter(func);
 }
+
+2.function filter(arr,fun){
+  for(var i=0;i<arr.length;i++){
+    if (fun(arr[i])!==true){
+      arr.splice(i,1);
+      i--;
+    }
+  }
+return arr;
+}
+
 function isNumeric (el){
     return typeof el === 'number';
 }
@@ -219,7 +252,7 @@ truncate("hello world", 20) == "hello world"
 
 //2. 写一个函数，获取从min都max之间的随机整数，包括min包括max （***）
 function randomNum(min,max) {
-  return Math.ruond(Math.random() * (max - min+1) + min);
+  return Math.floor(Math.random() * (max - min+1) + min);
 }
 
 //3. 写一个函数，获取一个随机数组，数组中元素为长度为len，最小值为min，最大值为max(包括)的随机整数 （***）
