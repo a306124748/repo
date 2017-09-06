@@ -43,7 +43,7 @@ console.log(str);  // 距除夕还有 20 天 15 小时 20 分 10 秒
   date=d.getDate()+'',
   a='';
   for(var i=0;i<year.length;i++){
-    a=a+arr[year[i]];
+    a+=arr[year[i]];
  }
  return a+'年'+arr[month]+'月'+arr[date]+'日';
 }
@@ -128,18 +128,33 @@ function f(num){
 var m={
   name:'xiao',
     age:22,
-    other:{
-      hobby:'reading'
-    }
-}
-function s(obj1){
-  var obj2={};
-  for(var key in obj1){
-    if(typeof obj1[key]==='onject'){
-      obj2[key]=s(obj1[key])
-    }else{
-      obj2[key]=obj1[key];
-    }
+    list:[1,2,3,4],
+    other:{hobby:'reading'}
   }
-  return obj2;
-}
+
+//对于数组、函数、对象来说，其关系错综复杂，使用 typeof 都会统一返回 “object” 字符串,因此在JavaScript中,通过Object.prototype.toString方法，判断某个对象值属于哪种内置类型。
+
+function deepCopy(obj) {
+    var clone = obj;
+    if (typeof obj == 'object' && Object.prototype.toString.call(obj) === '[object Array]') {
+      clone = [];
+      for (var i = 0; i < obj.length; i++) {
+        if (typeof obj[i] == 'object') {
+          clone[i] = deepCopy(obj[i]);
+        } else {
+          clone[i] = obj[i];
+        }
+      }
+    } else if (typeof obj == 'object') {
+      clone = {};
+      for (var key in obj) {
+        if (typeof obj[key] == 'object') {
+          clone[key] = deepCopy(obj[key]);
+        }
+        else {
+          clone[key] = obj[key];
+        }
+      }
+    } 
+    return clone;
+  }
