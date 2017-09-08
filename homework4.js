@@ -44,19 +44,19 @@ var Car = (function () {
     var speed = 0;
     return {
         setSpeed: function (n) {
-            Car.speed = n;
+            speed = n;
         },
         getSpeed: function () {
-            return Car.speed;
+            return speed;
         },
         accelerate: function () {
-            Car.speed+=10;
+            speed+=10;
         },
         decelerate: function() {
-            Car.speed-=10;
+            speed-=10;
         },
         getStatus: function() {
-            if (Car.speed>0) {
+            if (speed>0) {
                 return 'running';
             }
             return 'stop';
@@ -80,9 +80,9 @@ Car.getStatus();  //'stop';
 // 写一个函数使用`setTimeout`模拟`setInterval`的功能
 方法1：
 var i=1;
-var timer=setTimeout(function(){
+var timer=setTimeout(function f(){
 	alert(i++);
-	timer=setTimeout(arguments.callee,2000);
+	timer=setTimeout(f,2000);
 },2000) ;
 方法2：
 var n=0;
@@ -96,14 +96,14 @@ var n=0;
 // 写一个函数，计算setTimeout平均[备注：新加]最小时间粒度 
 var start=new Date();
   var i=0;
-  var clock=setTimeout(function(){
+  var clock=setTimeout(function f(){
         i++;
         if(i===100){
           clearTimeout(clock);
           var end=new Date();
           console.log((end-start)/i);
         }
-        rscript = setTimeout(arguments.callee,0);
+        rscript = setTimeout(f,0);
       },0)
 
 // 下面这段代码输出结果是? 为什么?
