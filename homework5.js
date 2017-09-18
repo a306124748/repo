@@ -1,8 +1,20 @@
 /*
- * 提示: el为dom元素，cls为操作的class， el.className获取el元素的class
+ * 提示: el为dom元素，cls为操作的class， el.className获取el元素的class.从元素的className里面提取出class。
  */
-
- ?????
+ var reg=function(cls){
+  return new RagExp('(^|\\s+)'+cls+'(\\s+|$)','g');
+ }
+ function hasClass(el,cls){
+  return reg(cls).test(el.className);
+ }
+ function addClass(el,cls){
+  if(!hasClass(el,cls)){
+    el.className+=''+cls;
+  }
+}
+function removeClass(el,cls){
+    el.className=el.className.replace(reg(cls),'');
+}
 
  /* 写一个函数isEmail(str)，判断用户输入的是不是邮箱  */
 function isEmail(str){
