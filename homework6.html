@@ -1,0 +1,56 @@
+<!--内容切换-->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>内容切换</title>
+  <style type="text/css">
+    *{margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+    ul{ list-style:none;}
+
+    .clearfix:after{
+      content:"";
+      display:block;
+      clear:both;
+    }
+
+    li{
+      float:left;
+      width:200px;
+      height:35px;
+      line-height:35px;
+      text-align:center;
+      border:1px solid #ccc;
+      cursor: pointer;  
+    }
+    .content{
+      width:600px;
+      height:200px;
+      border:1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+ <ul id="tab" class="clearfix">
+   <li>tab1</li>
+   <li>tab2</li>
+   <li>tab3</li>
+ </ul>
+   <div id="content">内容1</div>
+ <script>
+   var ol=document.querySelector('#tab'),
+       od=document.querySelector('#content');
+    ol.addEventListener('click',function(e){
+       var t=e.target.innerText;
+       for(var i=0;i<ol.children.length;i++){
+        ol.children[i].style.backgroundColor="#fff";
+       } //这个循环是为了当点击其中一个tab时，另外两个保持原本的颜色。
+       e.target.style.backgroundColor = "#eee";
+       od.innerText='内容'+t[t.length-1];
+    })
+ </script>
+</body>
+</html>
