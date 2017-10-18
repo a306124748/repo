@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>注册验证</title>
+	<style>
+		*{
+			box-sizing: border-box;
+		}
+		body{
+			font-size: 16px;
+		}
+		.register{
+			margin:30px;
+		}
+		.ct dd{
+			margin-left: 100px;
+		}
+		.ct dt{
+			width: 100px;
+			float: left;
+			height: 30px;
+			line-height: 30px;
+		}
+		.ct input{
+			height: 30px;
+			line-height: 30px;
+			padding-left:5px;
+			border:1px solid #ccc;
+			border-radius: 5px;
+		}
+		.ct .msg{
+			margin-top: 10px;
+			margin-bottom: 10px;
+			color:#aaa;
+			height: 15px;
+			font-size: 12px;
+		}
+	</style>
+</head>
+<body>
+    <div class="register">
+    	<h3>注册</h3>
+    	<form action="" id="register-form">
+    		<dl class="ct">
+    			<dt>用户名:</dt>
+    			<dd>
+    				<input type="text" id="usename" placeholder="用户名（hunger被注册过）">
+    			</dd>
+    			<dd class="msg un">只能是字母、数字、下划线，3-10个字符</dd>
+    			<dt>密码：</dt>
+    			<dd>
+    				<input type="password" id="password1">
+    			</dd>
+    			<dd class="msg pwd1">大写字母、小写、数字、下划线最少两种，6-15个字符</dd>
+    			<dt>再输一次：</dt>
+    			<dd>
+    				<input type="password" id="password2" placeholder="再输入一次密码">
+    			</dd>
+    			<dd class="msg pwd2"></dd>
+    			<dd><button id="btn">注册</button></dd>
+    		</dl>
+    	</form>
+    </div>
+    <script type="text/javascript">
+    	function ajax(opts){
+    		var xhr = new XMLHttpRequest();
+    		xhr.onreadystatechange = function(){
+    			if(xhr.readyState === 4&xhr.status === 200){
+                    opts.success(xhr.responseText);
+    			}
+    			if(xhr.readyState === 4&xhr.status===404){
+    				opts.onError()
+    			}
+    		}
+    		var dataStr = "";
+    		for(var key in opts.data){
+    			dataStr += key + "=" +opts.data[key] + "&";
+    		}
+    		dataStr=dataStr.substr(0,dataStr.length-1);
+    		if(opts.type.toLowerCase() === 'get'){
+    			xhr.open(opts.type,opts.url+'?'+dataStr,true)
+    			xhr.send()
+    		}
+    	}
+        function $(selector){
+            return document.querySelector(selector)
+        }
+    	var usename = $('#usename'),
+    	    password1 = $('#password1'),
+    	    password2 = $('#password2'),
+    	    btn = $('#btn'),
+    	    unmsg = $('.un'),
+    	    pwd1 = $('.pwd1'),
+    	    pwd2 = $('.pwd2');
+         
+         var cls = {
+            hasClass:function(ele,clsName){
+                var r = new RegExp('(\\s|^)'+clsName+'(\\s|$)')
+                return r.test(ele.className)
+            },
+            addClass:function(ele,clsName){
+                if(!cls.hasClass(ele,clsName)){
+                    ele.className += ''+clsName
+                }
+            },
+            removeClass:function(ele,clsName){
+                var r = new RegExp('(\\S|^)'+clsName+'(\\s|$)')
+                if(cls.hasClass(ele,clsName)){
+                    ele.className = ele.className.replace(r,'')
+                }
+            }
+        }
+
+        //验证用户名
+        function isLegalUsename(str){
+        	return /^[A-Za-z_0-9]{3,10}$/.test(str);
+        }
+        //判断密码
+        function isValidPsw(str){
+            if(str.length < 6 || str.length>16){
+                return false;
+            }
+            if(/[^A-Za-z_0-9]/.test(str)){
+                return false;
+            }
+            if (/(^[a-z]+$)|(^[A-Z]+$)|(^_+$)|(^\d+$)/g.test(str)) {
+                return false;
+            }
+            return true;
+        }
+
+        usename.addEventListener('change',function(){
+            testMsg() && dealWith()
+        });
+
+        password1.addEventListener('change',function(){
+            testPwd1();
+        });
+
+        password2.addEventListener('change',function(){
+             testPwd2();
+        });
+
+        btn.addEventListener('click',function(e){
+            e.preventDefault();
+            if(dealWith() && testPwd1() && testPwd2()){
+                testMsg(function(canUse){
+                    if(canUse){
+                     alert("正在注册");
+                     console.log('正在注册...');
+                    }    
+                })                                     
+            }           
+        })
+
+        function testMsg(handle){
+        	ajax({
+        		url:'homework2.php',
+        		type:'GET',
+        		data:{
+        			usename:usename.value,
+        		},
+        		success:function(ret){
+                    nb = ret-0;
+        			if(nb === 0){
+                        unmsg.innerText = "该用户名已使用";
+                        cls.addClass(usename,'error');
+                        handle&&handle(false);
+                    }
+                    if (nb ===1 && isLegalUsename(usename.value)) {
+                        unmsg.innerText = "该用户名可用";
+                        cls.removeClass(usename,'error');
+                        handle&&handle(true);
+                    }
+        		},
+        		error:function(){
+        			onError()
+        		}
+        	})
+        }
+
+        function dealWith(){
+            var username = usename.value;
+            if(!isLegalUsename(username)){
+                unmsg.innerText = "该用户名格式不正确";
+                cls.addClass(usename,'error');
+                return false;
+            }
+        	else{
+        		unmsg.innerText = '';
+                cls.removeClass(usename,'error');
+                return true;
+        	}
+        }
+      
+
+        function testPwd1(){
+        	if(!isValidPsw(password1.value)){
+        		pwd1.innerText = "密码格式不正确";
+        		cls.addClass(password1,'error');
+                return false;
+        	} else{
+        		pwd1.innerText = '';
+        		cls.removeClass(password1,'error');
+                return true;
+        	}
+        }
+
+        
+        function testPwd2(){
+        	if(!isValidPsw(password2.value)){
+        		pwd2.innerText = "密码格式不正确";
+        		cls.addClass(password2,'error');
+                return false;
+        	}
+        	else if(password2.value !== password1.value){
+        		pwd2.innerText = "两次密码输入不一致";
+        		cls.addClass(password2,'error');
+                return false;
+        	}
+        	else{
+        		pwd2.innerText = "";
+        		cls.removeClass(password1,'error');
+                return true;
+        	}
+        }
+        
+    </script>
+</body>
+</html>
