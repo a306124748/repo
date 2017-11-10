@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>导航</title>
+	<link rel="stylesheet" href="http://at.alicdn.com/t/font_456454_ayl2plkv3kawcdi.css">
+	<style>
+		ul,li{
+			margin:0;
+			padding: 0;
+			list-style: none;
+		}
+		a{
+			color:#333;
+			text-decoration:none;
+		}
+		.menu{
+			background: #c7171e;
+			width: 200px;
+		}
+		.category{
+			position: relative;
+		}
+		.menu .categoryName{
+			display: block;
+			margin:0 10px;
+			padding: 10px;
+			width: 160px;
+			border-bottom: 1px dotted #de272e;
+			color:white;
+			font-size: 14px;
+		}
+		.menu .i-right{
+			position: absolute;
+			right: 10px;
+			top:10px;
+			color: #fff;
+		}
+		.menu .submenu{
+			position: absolute;
+			top:0;
+			left: 200px;
+			background: #fff;
+			border:1px solid #ccc;
+			width: 210px;
+			font-size: 12px;
+			display: none;
+		}
+		/*.menu .category:hover .submenu{
+			display: block;
+		}   这个方法就不用jquery*/
+		.menu .category.hover .submenu{
+			display: block;
+		}
+		.menu .submenu li{
+			width: 55px;
+			float: left;
+			padding: 10px 20px;
+
+		}
+	</style>
+</head>
+<body>
+	<div class="siteNav">
+		<ul class="menu">
+			<li class="category">
+				<a href="#" class="categoryName">珠宝玉器</a>
+				<span class="icon-jd i-right"></span>
+				<ul class="submenu">
+					<li><a href="">翡翠</a></li>
+					<li><a href="">玉石</a></li>
+					<li><a href="">宝石</a></li>
+					<li><a href="">水晶</a></li>
+					<li><a href="">玛瑙</a></li>
+					<li><a href="">珍珠</a></li>
+					<li><a href="">钻石</a></li>
+					<li><a href="">琥珀</a></li>
+					<li><a href="">和田</a></li>
+					<li><a href="">琥珀</a></li>
+				</ul>
+			</li>
+			<li class="category">
+				<a href="#" class="categoryName">珠宝玉器</a>
+				<span class="icon-jd i-right"></span>
+				<ul class="submenu">
+					<li><a href="">翡翠</a></li>
+					<li><a href="">玉石</a></li>
+					<li><a href="">宝石</a></li>
+					<li><a href="">水晶</a></li>
+					<li><a href="">玛瑙</a></li>
+					<li><a href="">珍珠</a></li>
+				</ul>
+			</li>
+			<li class="category">
+				<a href="#" class="categoryName">珠宝玉器</a>
+				<span class="icon-jd i-right"></span>
+				<ul class="submenu">
+					<li><a href="">翡翠</a></li>
+					<li><a href="">玉石</a></li>
+					<li><a href="">宝石</a></li>
+					<li><a href="">水晶</a></li>
+				</ul>
+			</li>
+			<li class="category">
+				<a href="#" class="categoryName">珠宝玉器</a>
+				<span class="icon-jd i-right"></span>
+				<ul class="submenu">
+					<li><a href="">翡翠</a></li>
+					<li><a href="">玉石</a></li>
+					<li><a href="">宝石</a></li>
+					<li><a href="">水晶</a></li>
+					<li><a href="">玛瑙</a></li>
+					<li><a href="">珍珠</a></li>
+				</ul>
+			</li>
+			<li class="category">
+				<a href="#" class="categoryName">珠宝玉器</a>
+				<span class="icon-jd i-right"></span>
+				<ul class="submenu">
+					<li><a href="">翡翠</a></li>
+					<li><a href="">玉石</a></li>
+					<li><a href="">宝石</a></li>
+					<li><a href="">水晶</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	 <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    <script>
+    $(function(){
+    	$('.menu .category').on('mouseenter', function(){
+    		$(this).addClass('hover');
+    		// 或者
+    		// $(this).find('.categoryName').show();
+    		// 或者
+    		// $(this).find('.categoryName').css('display', 'block');
+    	});
+     	$('.menu .category').on('mouseleave', function(){
+    		$(this).removeClass('hover');
+    		// 或者
+    		// $(this).find('.categoryName').hide();
+    		// 或者
+    		// $(this).find('.categoryName').css('display', 'none');
+    	});   	
+    });
+    </script>
+</body>
+</html>
